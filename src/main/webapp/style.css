@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+}
+
+.card {
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    max-width: 500px;
+}
+
+.card h1 {
+    color: #1e3c72;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.login {
+    background: #1e3c72;
+    color: white;
+}
+
+.register {
+    background: #2a5298;
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Login Page */
+.login-card {
+    width: 350px;
+}
+
+.login-card form {
+    margin-top: 20px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.login-card input:focus {
+    outline: none;
+    border-color: #1e3c72;
+}
+
+/* Links */
+.link-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.link-text a {
+    color: #1e3c72;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.link-text a:hover {
+    text-decoration: underline;
+}
+
+/* Register Page */
+.register-card {
+    width: 380px;
+}
+
+.register-card form {
+    margin-top: 20px;
+}
+
+/* Success & Error Pages */
+.success h1 {
+    color: green;
+}
+
+.error h1 {
+    color: red;
+}
+
+.success p,
+.error p {
+    margin: 15px 0;
+    font-size: 16px;
+}
