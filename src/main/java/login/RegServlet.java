@@ -15,7 +15,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
+
 @WebServlet("/Register")
+
+
 public class RegServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String URL="jdbc:mysql://localhost:3306/userdb";
@@ -40,37 +43,39 @@ public class RegServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<h2>Login servlet is working (GET)</h2>");
+        response.sendRedirect("Register.html");
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String fname=request.getParameter("fname");
-		String lname=request.getParameter("lname");
-		String uname=request.getParameter("uname");
-		String paswrd=request.getParameter("paswrd");
-		try {
-			PreparedStatement pw= connection.prepareStatement("insert into userinfo values(?,?,?,?)");
-			pw.setString(1, fname);
-			pw.setString(2, lname);
-			pw.setString(3, uname);
-			pw.setString(4, paswrd);
-	        pw.executeUpdate();
-			PrintWriter ps=response.getWriter();
-			ps.println("<html><body bgcolor=red text=white><center>");
-			ps.println("<h3>User Registered successfully</h3>");
-			ps.println("<a href=login.html>login</a>");
-			ps.println("</center></body></html>");
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+        String fname = request.getParameter("fname");
+        String lname = request.getParameter("lname");
+        String uname = request.getParameter("uname");
+        String paswrd = request.getParameter("paswrd");
 
+        try {
+            PreparedStatement ps = connection.prepareStatement(
+                "INSERT INTO userinfo(fname,lname,uname,paswrd) VALUES(?,?,?,?)"
+            );
+
+            ps.setString(1, fname);
+            ps.setString(2, lname);
+            ps.setString(3, uname);
+            ps.setString(4, paswrd);
+
+            int row = ps.executeUpdate();
+
+            if (row > 0) {
+                response.sendRedirect("success.html");
+            } else {
+                response.sendRedirect("error.html");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("error.html");
+        }
+    }
 }
